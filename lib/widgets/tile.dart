@@ -14,14 +14,42 @@ class ImageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8)
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
         clipBehavior: Clip.antiAlias,
         height: extent,
-        child: Image.network(
-          imageSource,
-          fit: BoxFit.cover,
-        ));
+        child: Stack(fit: StackFit.expand, children: [
+          Image.network(
+            imageSource,
+            fit: BoxFit.cover,
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+                color: Colors.black.withOpacity(0.7),
+                padding: const EdgeInsets.all(8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Art $index',
+                      style: const TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w600),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        //change icon to filled heart
+                        //manage state
+                      },
+                      child: const Icon(
+                        Icons.favorite_outline,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                )),
+          ),
+        ]));
   }
 }
