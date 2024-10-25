@@ -21,11 +21,13 @@ class _HomePageState extends State<HomePage> {
               SliverAppBar(
                 floating: true,
                 snap: true,
-                title: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: const BoxDecoration(
-                      color: Colors.grey, shape: BoxShape.circle),
+                title: Center(
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: const BoxDecoration(
+                        color: Colors.grey, shape: BoxShape.circle),
+                  ),
                 ),
                 bottom: const TabBar(
                   tabs: [
