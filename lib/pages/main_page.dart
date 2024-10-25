@@ -33,6 +33,11 @@ class _MainPageState extends State<MainPage> {
         children: _pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+          fixedColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          iconSize: 32,
+          currentIndex: _currentIndex,
           onTap: (index) {
             setState(() {
               _currentIndex = index;
@@ -41,6 +46,7 @@ class _MainPageState extends State<MainPage> {
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
+
                 icon: Icon(Icons.card_giftcard), label: 'Explore'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.account_box_outlined), label: 'Account')
