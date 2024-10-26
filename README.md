@@ -55,7 +55,6 @@ lib/
 ## Tech Stack
 
 - Flutter
-- Provider (State Management)
 - Cached Network Image
 
 ## Current Status
