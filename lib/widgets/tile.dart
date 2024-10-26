@@ -1,3 +1,5 @@
+//import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ImageTile extends StatelessWidget {
@@ -18,10 +20,14 @@ class ImageTile extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         height: extent,
         child: Stack(fit: StackFit.expand, children: [
-          Image.network(
-            imageSource,
+          CachedNetworkImage(
             fit: BoxFit.cover,
+            imageUrl: imageSource,
           ),
+          // Image.network(
+          //   imageSource,
+          //   fit: BoxFit.cover,
+          // ),
           Positioned(
             bottom: 0,
             left: 0,
