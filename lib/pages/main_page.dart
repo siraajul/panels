@@ -20,10 +20,16 @@ class _MainPageState extends State<MainPage> {
     super.initState();
 
     _pages = [
-      const HomePage(),
+      HomePage(afterScrollResult: afterScrollResult,),
       const ExplorePage(),
       const AccountPage(),
     ];
+  }
+
+  afterScrollResult(bool visibility){
+    setState(() {
+      _isVisible = visibility;
+    });
   }
 
   @override
@@ -35,25 +41,29 @@ class _MainPageState extends State<MainPage> {
       ),
       bottomNavigationBar: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
-        height: _isVisible ? 100 : 0,
-        child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            fixedColor: Colors.black,
-            unselectedItemColor: Colors.grey,
-            iconSize: 32,
-            currentIndex: _currentIndex,
-            onTap: (index) {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.card_giftcard), label: 'Explore'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.account_box_outlined), label: 'Account')
-            ]),
+        height: _isVisible ? 65 : 0,
+        child: Wrap(
+          children: [
+            BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
+                fixedColor: Colors.black,
+                unselectedItemColor: Colors.grey,
+                iconSize: 32,
+                currentIndex: _currentIndex,
+                onTap: (index) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+                items: const [
+                  BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.card_giftcard), label: 'Explore'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.account_box_outlined), label: 'Account')
+                ]),
+          ],
+        ),
       ),
     );
   }
